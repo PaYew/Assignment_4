@@ -1,4 +1,5 @@
 ﻿using Assignment_1;
+using Assignment_4;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Xml.Linq;
 
@@ -6,33 +7,34 @@ namespace Assignment_4.Managers
 {
     public class FootballPlayerManager
     {
-        private static int _nextId = 1;
+        private static int id = 0;
         private static readonly List<FootballPlayer> Data = new List<FootballPlayer>
         {
-            new FootballPlayer(_nextId++, "Ronaldo", 32, 7),
-            new FootballPlayer(_nextId++, "Messi", 28, 10),
-            new FootballPlayer(_nextId++, "Kacper", 20, 99),
-            new FootballPlayer(_nextId++, "Pawel", 90, 69),
-            //https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/object-and-collection-initializers
+            new FootballPlayer{ Id = id++, Name = "Levandovski", Age = 20, ShirtNumber = 5 },
+            new FootballPlayer{ Id = id++, Name = "Messi", Age = 30, ShirtNumber = 10 },
+            new FootballPlayer{ Id = id++, Name = "Rolando", Age = 40, ShirtNumber = 15 },
+            new FootballPlayer{ Id = id++, Name = "Dziagwa", Age = 50, ShirtNumber = 20 },
         };
 
         public List<FootballPlayer> GetAll()
         {
             return new List<FootballPlayer>(Data);
         }
-        public FootballPlayer GetByID(int id)
+        public FootballPlayer? GetByID(int id)
         {
-            return Data.Find(player => player.ID == id);
+            return Data.Find(player => player.Id == id);
         }
-        public FootballPlayer Add(FootballPlayer newPlayer)
+        public FootballPlayer Add(FootballPlayer Player)
         {
-            newPlayer.ID = _nextId++;
-            Data.Add(newPlayer);
-            return newPlayer;
+            Player.Id = id++;
+
+            Data.Add(Player);
+
+            return Player;
         }
-        public FootballPlayer Update(int id, FootballPlayer updates)
+        public FootballPlayer? Update(int id, FootballPlayer updates)
         {
-            FootballPlayer player = Data.Find(player1 => player1.ID == id);
+            FootballPlayer? player = Data.Find(player1 => player1.Id == id);
             if (player == null)
             {
                 return null;
@@ -44,17 +46,17 @@ namespace Assignment_4.Managers
             }
 
         }
-        public FootballPlayer Delete(int id)
+        public FootballPlayer? Delete(int id)
         {
-            FootballPlayer book = Data.Find(player1 => player1.Id == id);
-            if (book == null)
+            FootballPlayer? player = Data.Find(player1 => player1.Id == id);
+            if (player == null)
             {
                 return null;
             }
             else
             {
-                Data.Remove(book);
-                return book;
+                Data.Remove(player);
+                return player;
             }
         }
     }

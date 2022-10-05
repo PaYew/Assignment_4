@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <Reference Include="Assignment_1">
-      <HintPath>..\..\PaYew\Assignment_1\Assignment_1\bin\Debug\net6.0\Assignment_1.dll</HintPath>
+      <HintPath>..\..\Assignment_1\Assignment_1\bin\Debug\net6.0\Assignment_1.dll</HintPath>
     </Reference>
   </ItemGroup>
 
